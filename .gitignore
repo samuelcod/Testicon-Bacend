@@ -1,0 +1,21 @@
+*.class
+target/
+test-output/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IDE Files #
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+
+*.log
+
+bin/
+*.mvn
+
