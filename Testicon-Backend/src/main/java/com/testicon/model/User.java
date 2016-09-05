@@ -1,163 +1,286 @@
 package com.testicon.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.io.Serializable;
+import javax.persistence.*;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
- /*@Entity
- @Table(name="users")
- @NamedQueries({
-	 @NamedQuery(name = "User.findByEmailAddress",
-	 query = "select u from User u where u.email = ?1"),
-	 @NamedQuery(name = "User.findByEmailAddress",
-	 query = "select u from User u where u.lastName = ?1")
- })*/
-public class User {
-	
+import java.math.BigDecimal;
+import java.util.List;
+
+
+/**
+ * The persistent class for the USERS database table.
+ * 
+ */
+@Entity
+@Table(name="USERS")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
-	@NotNull
-	private Long id;
-	@NotNull
-	private String email;
-	@NotNull
-	private String firstName;
-	@NotNull
-	private String lastName;
-	@NotNull
-	private String adress;
-	private int postalCode;
-	@NotNull
+	@Column(name="USER_ID")
+	private long userId;
+
+	private String address;
+
 	private String city;
-	private String state;
-	@NotNull
-	private String country;
-	@NotNull
-	private int personalNumber;
-	@NotNull
-	private String gender;
-	private int telephoneNumber;
+
 	private String company;
-	@NotNull
-	boolean myBoolean;
-	private boolean confirmed;
-	@NotNull
+
+	private BigDecimal confirmed;
+
+	private String country;
+
+	private String email;
+
+	@Column(name="FIRST_NAME")
+	private String firstName;
+
+	private String gender;
+
+	@Column(name="LAST_NAME")
+	private String lastName;
+	@JsonIgnore
 	private String password;
-	private String tempPassword;
+
+	@Column(name="PERS_NBR")
+	private String persNbr;
+
+	@Column(name="POSTAL_CODE")
+	private String postalCode;
+
+	@Column(name="STATE_PROVINCE")
+	private String stateProvince;
+
+	@Column(name="TELE_NBR")
+	private String teleNbr;
+	@JsonIgnore
+	@Column(name="TEMP_EMAIL")
 	private String tempEmail;
-	
-	
-	public String getAdress() {
-		return adress;
+	@JsonIgnore
+	@Column(name="TEMP_PASSWORD")
+	private String tempPassword;
+
+	//bi-directional many-to-one association to Booking
+	@OneToMany(mappedBy="user" , fetch = FetchType.EAGER)
+	private List<Booking> bookings;
+
+	/*provider test person key */
+	//bi-directional many-to-one association to Ptpk
+	@JsonIgnore
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+	private List<Ptpk> ptpks;
+
+	//bi-directional many-to-one association to TestResult
+	@JsonIgnore
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+	private List<TestResult> testResults;
+
+	public User() {
 	}
+
+	public long getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public String getCity() {
-		return city;
+		return this.city;
 	}
-	public String getCompany() {
-		return company;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public Long getId() {
-		return id;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public int getPersonalNumber() {
-		return personalNumber;
-	}
-	public int getPostalCode() {
-		return postalCode;
-	}
-	public String getState() {
-		return state;
-	}
-	public int getTelephoneNumber() {
-		return telephoneNumber;
-	}
-	public String getTempEmail() {
-		return tempEmail;
-	}
-	public String getTempPassword() {
-		return tempPassword;
-	}
-	public boolean isConfirmed() {
-		return confirmed;
-	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+	public String getCompany() {
+		return this.company;
+	}
+
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public void setConfirmed(boolean confirmed) {
+
+	public BigDecimal getConfirmed() {
+		return this.confirmed;
+	}
+
+	public void setConfirmed(BigDecimal confirmed) {
 		this.confirmed = confirmed;
 	}
+
+	public String getCountry() {
+		return this.country;
+	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getFirstName() {
+		return this.firstName;
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+	public String getGender() {
+		return this.gender;
+	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public String getLastName() {
+		return this.lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public void setPersonalNumber(int personalNumber) {
-		this.personalNumber = personalNumber;
+
+	public String getPersNbr() {
+		return this.persNbr;
 	}
-	public void setPostalCode(int postalCode) {
+
+	public void setPersNbr(String persNbr) {
+		this.persNbr = persNbr;
+	}
+
+	public String getPostalCode() {
+		return this.postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-	public void setState(String state) {
-		this.state = state;
+
+	public String getStateProvince() {
+		return this.stateProvince;
 	}
-	public void setTelephoneNumber(int telephoneNumber) {
-		this.telephoneNumber = telephoneNumber;
+
+	public void setStateProvince(String stateProvince) {
+		this.stateProvince = stateProvince;
 	}
+
+	public String getTeleNbr() {
+		return this.teleNbr;
+	}
+
+	public void setTeleNbr(String teleNbr) {
+		this.teleNbr = teleNbr;
+	}
+
+	public String getTempEmail() {
+		return this.tempEmail;
+	}
+
 	public void setTempEmail(String tempEmail) {
 		this.tempEmail = tempEmail;
 	}
+
+	public String getTempPassword() {
+		return this.tempPassword;
+	}
+
 	public void setTempPassword(String tempPassword) {
 		this.tempPassword = tempPassword;
 	}
-	
+
+	public List<Booking> getBookings() {
+		return this.bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
+	public Booking addBooking(Booking booking) {
+		getBookings().add(booking);
+		booking.setUser(this);
+
+		return booking;
+	}
+
+	public Booking removeBooking(Booking booking) {
+		getBookings().remove(booking);
+		booking.setUser(null);
+
+		return booking;
+	}
+
+	public List<Ptpk> getPtpks() {
+		return this.ptpks;
+	}
+
+	public void setPtpks(List<Ptpk> ptpks) {
+		this.ptpks = ptpks;
+	}
+
+	public Ptpk addPtpk(Ptpk ptpk) {
+		getPtpks().add(ptpk);
+		ptpk.setUser(this);
+
+		return ptpk;
+	}
+
+	public Ptpk removePtpk(Ptpk ptpk) {
+		getPtpks().remove(ptpk);
+		ptpk.setUser(null);
+
+		return ptpk;
+	}
+
+	public List<TestResult> getTestResults() {
+		return this.testResults;
+	}
+
+	public void setTestResults(List<TestResult> testResults) {
+		this.testResults = testResults;
+	}
+
+	public TestResult addTestResult(TestResult testResult) {
+		getTestResults().add(testResult);
+		testResult.setUser(this);
+
+		return testResult;
+	}
+
+	public TestResult removeTestResult(TestResult testResult) {
+		getTestResults().remove(testResult);
+		testResult.setUser(null);
+
+		return testResult;
+	}
+
 }

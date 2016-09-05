@@ -1,4 +1,6 @@
-/*package com.testicon.service;
+package com.testicon.service;
+
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -23,13 +25,39 @@ public class UserSeviceImpl implements UserService{
 		return userRepository.saveAndFlush(user);
 	}
 	
-	//User user = userRepository.findByEmail("jdixon5f@dell.com");
-	
-	@Transactional
+
+	@Override
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User findByUserId(long id) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUserId(id);
+	}
+
+	@Override
+	public long deleteByUserId(long id) {
+		// TODO Auto-generated method stub
+		return userRepository.deleteByUserId(id);
+	}
+
+	@Override
+	public boolean exist(User user) {
+		// TODO Auto-generated method stub
+		if(userRepository.findByEmail(user.getEmail()) != null) {
+			return true;
+		} 
+		return false;
+	}
+
+
+	@Override
 	public User findByEmail(String email) {
 		// TODO Auto-generated method stub
 		return userRepository.findByEmail(email);
-		//return User user = userRepository.findByEmail("jdixon5f@dell.com");
 	}
 
-}*/
+}
