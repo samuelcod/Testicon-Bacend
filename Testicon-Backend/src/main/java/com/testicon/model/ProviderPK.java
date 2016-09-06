@@ -7,7 +7,7 @@ import javax.persistence.*;
  * The primary key class for the PROVIDERS database table.
  * 
  */
-//@Embeddable
+@Embeddable
 public class ProviderPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;

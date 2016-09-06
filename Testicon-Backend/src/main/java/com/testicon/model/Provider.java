@@ -21,7 +21,7 @@ public class Provider implements Serializable {
 
 	@EmbeddedId
 	private ProviderPK id;
-
+	@JsonIgnore
 	private BigDecimal active;
 
 	private String company;
@@ -39,6 +39,7 @@ public class Provider implements Serializable {
 
 	//bi-directional many-to-one association to Booking
 	@OneToMany(mappedBy="provider" ,fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Booking> bookings;
 
 	//bi-directional many-to-one association to Ptpk

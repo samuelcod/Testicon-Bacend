@@ -22,8 +22,8 @@ public class Ptpk implements Serializable {
 	//bi-directional many-to-one association to Provider
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name="COUNTRY", insertable=false, updatable=false),
-		@JoinColumn(name="ORG_NBR", insertable=false, updatable=false)
+		@JoinColumn(name="COUNTRY",  referencedColumnName="COUNTRY", insertable=false, updatable=false),
+		@JoinColumn(name="ORG_NBR", referencedColumnName="ORG_NBR",insertable=false, updatable=false)
 		})
 	private Provider provider;
 

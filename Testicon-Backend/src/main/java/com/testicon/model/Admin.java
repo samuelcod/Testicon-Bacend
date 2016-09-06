@@ -2,12 +2,16 @@ package com.testicon.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -33,24 +37,25 @@ public class Admin implements Serializable {
 
 	@Column(name="LAST_NAME")
 	private String lastName;
-
+	@JsonIgnore
 	private String password;
-
+	@JsonIgnore
 	@Column(name="SUPER_ADMIN")
 	private BigDecimal superAdmin;
 
 	@Column(name="TELE_NBR")
 	private String teleNbr;
-
+	@JsonIgnore
 	@Column(name="TEMP_EMAIL")
 	private String tempEmail;
-
+	@JsonIgnore
 	@Column(name="TEMP_PASSWORD")
 	private String tempPassword;
 
 	//bi-directional many-to-many association to TestCenter
-//	@ManyToMany(mappedBy="admins")
-//	private List<TestCenter> testCenters;
+	@JsonIgnore
+	@ManyToMany(mappedBy="admins")
+	private List<TestCenter> testCenters;
 
 	public Admin() {
 	}

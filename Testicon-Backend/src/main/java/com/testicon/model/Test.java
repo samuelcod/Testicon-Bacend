@@ -52,6 +52,7 @@ public class Test implements Serializable {
 
 	//bi-directional many-to-one association to Booking
 	@OneToMany(mappedBy="test", fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Booking> bookings;
 
 	//bi-directional many-to-one association to Provider

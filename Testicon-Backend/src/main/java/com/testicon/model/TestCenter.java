@@ -49,6 +49,7 @@ public class TestCenter implements Serializable {
 
 	//bi-directional many-to-one association to Booking
 	@OneToMany(mappedBy="testCenter",fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Booking> bookings;
 
 	//bi-directional many-to-one association to OpenHour

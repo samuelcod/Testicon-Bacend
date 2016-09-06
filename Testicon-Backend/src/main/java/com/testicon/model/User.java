@@ -28,7 +28,7 @@ public class User implements Serializable {
 	private String city;
 
 	private String company;
-
+	@JsonIgnore
 	private BigDecimal confirmed;
 
 	private String country;
@@ -65,6 +65,7 @@ public class User implements Serializable {
 
 	//bi-directional many-to-one association to Booking
 	@OneToMany(mappedBy="user" , fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Booking> bookings;
 
 	/*provider test person key */

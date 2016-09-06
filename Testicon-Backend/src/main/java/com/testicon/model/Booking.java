@@ -32,8 +32,8 @@ public class Booking implements Serializable {
 	private BigDecimal seatNumber;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="START_DATE")
-	private Date startDate;
+	@Column(name="START_TIME")
+	private Date startTime;
 
 	//bi-directional many-to-one association to Provider
 	@ManyToOne
@@ -101,12 +101,13 @@ public class Booking implements Serializable {
 		this.seatNumber = seatNumber;
 	}
 
-	public Date getStartDate() {
-		return this.startDate;
+
+	public Date getStartTime() {
+		return this.startTime;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
 	public Provider getProvider() {
