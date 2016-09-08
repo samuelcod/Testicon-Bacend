@@ -20,4 +20,10 @@ public class TestCenterServiceImpl implements TestCenterService {
 		return testCenterRepository.findAll() ;
 	}
 
+	@Override
+	public TestCenter findByTestCenterId(long id) {
+		// TODO Auto-generated method stub
+		return testCenterRepository.findByTestCenterId(id);
+	}
+
 }

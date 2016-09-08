@@ -7,5 +7,5 @@ import com.testicon.model.Admin;
 
 @Repository("adminRepository")
 public interface AdminRepository extends JpaRepository<Admin, Long> {
-	Admin findByEmail(String email);
+	Admin findByAdminId(long id);
 }

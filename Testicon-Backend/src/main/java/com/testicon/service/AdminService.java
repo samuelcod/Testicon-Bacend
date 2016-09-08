@@ -6,6 +6,8 @@ import com.testicon.model.Admin;
 
 public interface AdminService {
 	List<Admin> findAll();
-	boolean exist(Admin admin);
-	Admin save(Admin admin);
+	//boolean exist(Admin admin);
+	//Admin save(Admin admin);
+
+	Admin findByAdminId(long id);
 }

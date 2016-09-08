@@ -7,5 +7,5 @@ import com.testicon.model.TestCenter;
 
 @Repository("testCenterRepository")
 public interface TestCenterRepository extends JpaRepository<TestCenter, Long> {
-
+	TestCenter findByTestCenterId(long id);
 }

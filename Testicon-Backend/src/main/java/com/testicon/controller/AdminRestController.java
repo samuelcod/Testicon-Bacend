@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,7 +32,15 @@ public class AdminRestController {
 		return new ResponseEntity<List<Admin>>(admins, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/admins", method = RequestMethod.POST)
+	
+	@RequestMapping(value="/admins/{id}", method = RequestMethod.GET )
+	public ResponseEntity<Admin> getAdminById(@PathVariable("id") long id) {
+		Admin admin = adminService.findByAdminId(id);
+		return new ResponseEntity<Admin>(admin, HttpStatus.OK);
+	} 
+	
+	//not tested
+	/*@RequestMapping(value="/admins", method = RequestMethod.POST)
 	public ResponseEntity<Void>  addNewAdmin(@RequestBody Admin admin) {
 		System.out.println("addNewAdmin(): " + admin.getEmail());
 		if (adminService.exist(admin)) {
@@ -42,5 +50,5 @@ public class AdminRestController {
 		adminService.save(admin);
   
         return new ResponseEntity<Void>(HttpStatus.CREATED);
-	}
+	}*/
 }

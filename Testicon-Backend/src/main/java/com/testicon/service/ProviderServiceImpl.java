@@ -13,6 +13,7 @@ public class ProviderServiceImpl implements ProviderService {
 
 	@Autowired
 	ProviderRepository providerRepository;
+	
 	@Override
 	public List<Provider> findAll() {
 		// TODO Auto-generated method stub

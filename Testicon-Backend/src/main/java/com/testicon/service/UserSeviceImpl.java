@@ -38,7 +38,7 @@ public class UserSeviceImpl implements UserService{
 		return userRepository.findByUserId(id);
 	}
 
-	@Override
+	/*@Override
 	public long deleteByUserId(long id) {
 		// TODO Auto-generated method stub
 		return userRepository.deleteByUserId(id);
@@ -59,5 +59,5 @@ public class UserSeviceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userRepository.findByEmail(email);
 	}
-
+*/
 }

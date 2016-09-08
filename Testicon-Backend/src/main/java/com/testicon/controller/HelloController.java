@@ -9,9 +9,6 @@ public class HelloController {
 
 		@RequestMapping(value="/")
 		public String index(Model model){
-			System.out.println("Wellcome");
 			return "index";
-			//return "forward:index.jsp";
-			
 		}
 }

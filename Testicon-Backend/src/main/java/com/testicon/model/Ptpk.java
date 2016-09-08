@@ -3,6 +3,8 @@ package com.testicon.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the PTPK database table.
@@ -30,6 +32,7 @@ public class Ptpk implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
+	@JsonIgnore
 	private User user;
 
 	public Ptpk() {

@@ -20,9 +20,9 @@ public class BookingServiceImpl implements BookingService {
 		return bookingRepository.findAll();
 	}
 
-	@Override
+	/*@Override
 	public Booking save(Booking booking) {
 		// TODO Auto-generated method stub
 		return bookingRepository.saveAndFlush(booking);
-	}
+	}*/
 }

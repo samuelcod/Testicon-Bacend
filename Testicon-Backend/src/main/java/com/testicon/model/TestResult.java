@@ -2,6 +2,9 @@ package com.testicon.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 
 
@@ -34,16 +37,19 @@ public class TestResult implements Serializable {
 	//bi-directional many-to-one association to Test
 	@ManyToOne
 	@JoinColumn(name="TEST_ID",insertable=false, updatable=false)
+	@JsonIgnore
 	private Test test;
 
 	//bi-directional many-to-one association to TestCenter
 	@ManyToOne
 	@JoinColumn(name="TEST_CENTER_ID")
+	@JsonIgnore
 	private TestCenter testCenter;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="USER_ID",insertable=false, updatable=false)
+	@JsonIgnore
 	private User user;
 
 	public TestResult() {

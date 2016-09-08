@@ -6,4 +6,5 @@ import com.testicon.model.TestCenter;
 
 public interface TestCenterService {
 	List<TestCenter> findAll();
+	TestCenter findByTestCenterId(long id);
 }

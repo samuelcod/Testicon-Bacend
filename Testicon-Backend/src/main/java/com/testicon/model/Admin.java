@@ -140,12 +140,12 @@ public class Admin implements Serializable {
 		this.tempPassword = tempPassword;
 	}
 
-	/*public List<TestCenter> getTestCenters() {
+	public List<TestCenter> getTestCenters() {
 		return this.testCenters;
 	}
 
 	public void setTestCenters(List<TestCenter> testCenters) {
 		this.testCenters = testCenters;
-	}*/
+	}
 
 }

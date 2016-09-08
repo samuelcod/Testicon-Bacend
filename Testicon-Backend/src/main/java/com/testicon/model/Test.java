@@ -56,12 +56,12 @@ public class Test implements Serializable {
 	private List<Booking> bookings;
 
 	//bi-directional many-to-one association to Provider
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumns({
 		@JoinColumn(name="COUNTRY", referencedColumnName="COUNTRY"),
 		@JoinColumn(name="ORG_NBR", referencedColumnName="ORG_NBR")
 		})
-	@JsonIgnore
+	//@JsonIgnore
 	private Provider provider;
 
 	//bi-directional many-to-one association to TestResult
@@ -166,7 +166,6 @@ public class Test implements Serializable {
 		this.provider = provider;
 	}
 
-	@JsonIgnore
 	public List<TestResult> getTestResults() {
 		return this.testResults;
 	}

@@ -6,5 +6,5 @@ import com.testicon.model.Booking;
 
 public interface BookingService {
 	List<Booking> findAll();
-	Booking save(Booking booking);
+	//Booking save(Booking booking);
 }

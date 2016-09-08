@@ -21,6 +21,13 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public Admin findByAdminId(long id) {
+		// TODO Auto-generated method stub
+		return adminRepository.findByAdminId(id);
+	}
+
+	
+	/*@Override
 	public boolean exist(Admin admin) {
 		// TODO Auto-generated method stub
 		if(adminRepository.findByEmail(admin.getEmail()) != null) {
@@ -34,5 +41,5 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return adminRepository.saveAndFlush(admin);
 	}
-
+*/
 }

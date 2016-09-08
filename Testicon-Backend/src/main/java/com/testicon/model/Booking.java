@@ -2,6 +2,9 @@ package com.testicon.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -41,6 +44,7 @@ public class Booking implements Serializable {
 		@JoinColumn(name="COUNTRY", referencedColumnName="COUNTRY"),
 		@JoinColumn(name="ORG_NBR", referencedColumnName="ORG_NBR")
 		})
+	//@JsonIgnore
 	private Provider provider;
 
 	//bi-directional many-to-one association to Test
@@ -56,6 +60,7 @@ public class Booking implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="USER_ID",insertable=false, updatable=false)
+	@JsonIgnore
 	private User user;
 
 	public Booking() {

@@ -39,6 +39,8 @@ public class Provider implements Serializable {
 
 	//bi-directional many-to-one association to Booking
 	@OneToMany(mappedBy="provider" ,fetch = FetchType.EAGER)
+	
+	
 	@JsonIgnore
 	private List<Booking> bookings;
 

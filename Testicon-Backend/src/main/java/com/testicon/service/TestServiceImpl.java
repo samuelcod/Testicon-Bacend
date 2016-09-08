@@ -2,8 +2,6 @@ package com.testicon.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +20,12 @@ public class TestServiceImpl implements TestService {
 		return testRepository.findAll() ;
 	}
 
-	@Transactional
+	/*@Transactional
 	@Override
 	public Test save(Test test) {
 		// TODO Auto-generated method stub
 		return testRepository.saveAndFlush(test);
-	}
+	}*/
 
 	@Override
 	public Test findByTestId(long id) {

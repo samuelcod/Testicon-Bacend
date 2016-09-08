@@ -12,5 +12,4 @@ public class AdminController {
 		model.addAttribute("greeting", "Wellcome admin");
 		return "adminpage";
 	}
-
 }

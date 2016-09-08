@@ -6,6 +6,6 @@ import com.testicon.model.Test;
 
 public interface TestService {
 	List<Test> findAll();
-	Test save(Test test);
+	//Test save(Test test);
 	Test findByTestId(long id);
 }

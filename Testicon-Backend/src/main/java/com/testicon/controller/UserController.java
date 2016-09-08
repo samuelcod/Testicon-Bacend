@@ -1,14 +1,8 @@
 package com.testicon.controller;
 
-import java.math.BigDecimal;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.testicon.model.User;
-import com.testicon.service.UserService;
 
 //import com.testicon.service.UserService;
 
@@ -16,8 +10,8 @@ import com.testicon.service.UserService;
 @Controller
 public class UserController {
 	
-	@Autowired
-	private UserService userService; 
+	//@Autowired
+	//private UserService userService; 
 	
 	@RequestMapping(value ="/hello")
 	public String sayHello(Model model) {
@@ -25,7 +19,7 @@ public class UserController {
 		return "hello";
 	}
 	
-	@RequestMapping(value ="/addnewuser")
+	/*@RequestMapping(value ="/addnewuser")
 	public String addNewUser(Model model) {
 		if(userService.findByEmail(getFakeUser().getEmail()) != null) {
 			model.addAttribute("greeting", "User with the same email exists");
@@ -45,7 +39,7 @@ public class UserController {
 		user.setCompany("testicon");
 		user.setConfirmed(new BigDecimal(1));
 		user.setCountry("sweden");
-		user.setEmail("teacher@testicon.com");
+		user.setEmail("teacher2@testicon.com");
 		user.setFirstName("teacher");
 		user.setGender("Male");
 		user.setLastName("teacher");
@@ -56,7 +50,7 @@ public class UserController {
 		user.setTeleNbr("333333333333");
 		
 		return user;
-	}
+	}*/
 	
 	
 }

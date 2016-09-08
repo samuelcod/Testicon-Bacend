@@ -54,11 +54,11 @@ public class TestCenter implements Serializable {
 
 	//bi-directional many-to-one association to OpenHour
 	@OneToMany(mappedBy="testCenter",fetch = FetchType.EAGER)
-	@JsonIgnore
+	//@JsonIgnore
 	private List<OpenHour> openHours;
 
 	//bi-directional many-to-many association to Admin
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="TEST_CENTER_ADMINS"
 		, joinColumns={
@@ -68,7 +68,7 @@ public class TestCenter implements Serializable {
 			@JoinColumn(name="ADMIN_ID")
 			}
 		)
-	@JsonIgnore
+	//@JsonIgnore
 	private List<Admin> admins;
 
 	//bi-directional many-to-one association to TestResult

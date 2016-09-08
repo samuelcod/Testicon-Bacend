@@ -42,7 +42,7 @@ public class User implements Serializable {
 
 	@Column(name="LAST_NAME")
 	private String lastName;
-	@JsonIgnore
+	//@JsonIgnore
 	private String password;
 
 	@Column(name="PERS_NBR")
@@ -65,17 +65,17 @@ public class User implements Serializable {
 
 	//bi-directional many-to-one association to Booking
 	@OneToMany(mappedBy="user" , fetch = FetchType.EAGER)
-	@JsonIgnore
+	//@JsonIgnore
 	private List<Booking> bookings;
 
 	/*provider test person key */
 	//bi-directional many-to-one association to Ptpk
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)
 	private List<Ptpk> ptpks;
 
 	//bi-directional many-to-one association to TestResult
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)
 	private List<TestResult> testResults;
 
