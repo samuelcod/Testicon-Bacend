@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.testicon.model.Test;
+import com.testicon.model.User;
 import com.testicon.service.TestService;
 
 @RestController
@@ -40,6 +41,9 @@ public class TestRestController {
 	@RequestMapping(value="/tests/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Test> getTestById(@PathVariable("id") long id) {
 		Test test = testService.findByTestId(id);
+		if (test == null) {   
+			   return new ResponseEntity<Test>(HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<Test>(test, HttpStatus.OK);
 	} 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.testicon.model.TestCenter;
+import com.testicon.model.User;
 import com.testicon.service.TestCenterService;
 
 @RestController
@@ -34,6 +35,9 @@ public class TestCenterRestController {
 	public ResponseEntity<TestCenter> getTestCenterById(@PathVariable("id") long id) {
 		TestCenter testcenter = testCenterService.findByTestCenterId(id);
 		//System.out.println("User found: "+ testcenter.getFirstName());
+		if (testcenter == null) {   
+			   return new ResponseEntity<TestCenter>(HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<TestCenter>(testcenter, HttpStatus.OK);
 	} 
 }

@@ -35,6 +35,9 @@ public class UserRestController {
 	@RequestMapping(value="/users/{id}", method = RequestMethod.GET )
 	public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
 		User user = userService.findByUserId(id);
+		if (user == null) {   
+			   return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+		}
 		System.out.println("User found: "+ user.getFirstName());
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	} 

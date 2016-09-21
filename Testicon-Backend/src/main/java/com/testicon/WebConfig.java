@@ -27,7 +27,7 @@ public class WebConfig  extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/pdfs/**").addResourceLocations("/WEB-INF/pdf/");
 		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
 	}
-
+	
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**");

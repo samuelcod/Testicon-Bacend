@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.testicon.model.Admin;
+import com.testicon.model.User;
 import com.testicon.service.AdminService;
 
 @RestController
@@ -36,6 +37,9 @@ public class AdminRestController {
 	@RequestMapping(value="/admins/{id}", method = RequestMethod.GET )
 	public ResponseEntity<Admin> getAdminById(@PathVariable("id") long id) {
 		Admin admin = adminService.findByAdminId(id);
+		if (admin == null) {   
+			   return new ResponseEntity<Admin>(HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<Admin>(admin, HttpStatus.OK);
 	} 
 	
