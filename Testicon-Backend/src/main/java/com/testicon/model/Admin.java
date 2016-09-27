@@ -37,7 +37,7 @@ public class Admin implements Serializable {
 
 	@Column(name="LAST_NAME")
 	private String lastName;
-	@JsonIgnore
+	//@JsonIgnore
 	private String password;
 	@JsonIgnore
 	@Column(name="SUPER_ADMIN")
